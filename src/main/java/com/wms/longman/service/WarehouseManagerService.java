@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface WarehouseManagerService {
     List<WarehouseManager> select_all_warehouse_manager() throws Exception;
+    boolean insert_new_manager(WarehouseManager warehouseManager) throws Exception;
 }

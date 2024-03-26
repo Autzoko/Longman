@@ -9,4 +9,5 @@ import java.util.List;
 @Mapper
 public interface WarehouseManagerMapper extends BaseMapper<WarehouseManager> {
     List<WarehouseManager> select_all_warehouse_manager();
+    boolean insert_new_manager(WarehouseManager warehouseManager);
 }

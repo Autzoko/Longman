@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wms.longman.mapper.WarehouseManagerMapper">
+    <resultMap id="WarehouseManagerMap" type="com.wms.longman.entity.WarehouseManager">
+        <id property="manager_id" column="manager_id"/>
+        <result property="manager_id" column="manager_id"/>
+        <result property="manager_name" column="manager_name"/>
+        <result property="manager_pwd" column="manager_pwd"/>
+        <result property="manager_level" column="manager_level"/>
+        <result property="last_login_datetime" column="last_login_datetime"/>
+        <result property="manager_email" column="manager_email"/>
+    </resultMap>
     <!-- select all warehouse manager info -->
-    <select id="select_all_warehouse_manager" resultType="com.wms.longman.entity.WarehouseManager">
+    <select id="select_all_warehouse_manager" resultMap="WarehouseManagerMap">
         select * from lm_warehouse_manager
     </select>
+    <insert id="insert_new_manager" parameterType="com.wms.longman.entity.WarehouseManager">
+        insert into lm_warehouse_manager
+        values(#{manager_id}, #{manager_name}, #{manager_pwd}, #{manager_level}, #{last_login_datetime}, #{manager_email})
+    </insert>
 </mapper>
