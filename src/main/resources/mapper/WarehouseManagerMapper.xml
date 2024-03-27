@@ -18,4 +18,21 @@
         insert into lm_warehouse_manager
         values(#{manager_id}, #{manager_name}, #{manager_pwd}, #{manager_level}, #{last_login_datetime}, #{manager_email})
     </insert>
+    <delete id="delete_manager" parameterType="String">
+        delete from lm_warehouse_manager where manager_id=#{manager_id}
+    </delete>
+    <update id="update_manager" parameterType="com.wms.longman.entity.WarehouseManager">
+        update lm_warehouse_manager
+        set
+            manager_name = #{manager_name},
+            manager_pwd = #{manager_pwd},
+            manager_level = #{manager_level},
+            last_login_datetime = #{last_login_datetime},
+            manager_email = #{manager_email}
+        where
+            manager_id = #{manager_id}
+    </update>
+    <select id="select_warehouse_manager_by_id" parameterType="String" resultMap="WarehouseManagerMap">
+        select * from lm_warehouse_manager where manager_id = #{manager_id}
+    </select>
 </mapper>

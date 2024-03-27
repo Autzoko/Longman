@@ -29,4 +29,18 @@ public class WarehouseManagerController {
         warehouseManagerService.insert_new_manager(warehouseManager);
         return Result.success();
     }
+
+    @RequestMapping(value = "/delete-manager", method = RequestMethod.DELETE)
+    public Result deleteManager(@RequestParam String managerID) throws Exception {
+        log.info("manager_id = {}" + managerID);
+        warehouseManagerService.delete_manager(managerID);
+        return Result.success();
+    }
+
+    @RequestMapping(value = "/update-manager", method = RequestMethod.PUT)
+    public Result updateManager(@RequestBody WarehouseManager warehouseManager) throws Exception {
+        log.info("warehouseManager = {}" + warehouseManager);
+        warehouseManagerService.update_manager(warehouseManager);
+        return Result.success();
+    }
 }

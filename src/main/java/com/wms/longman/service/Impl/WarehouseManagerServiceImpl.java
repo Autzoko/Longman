@@ -5,7 +5,6 @@ import com.wms.longman.entity.WarehouseManager;
 import com.wms.longman.mapper.WarehouseManagerMapper;
 import com.wms.longman.service.WarehouseManagerService;
 import jakarta.annotation.Resource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,8 +18,20 @@ public class WarehouseManagerServiceImpl extends ServiceImpl<WarehouseManagerMap
         return warehouseManagerMapper.select_all_warehouse_manager();
     }
 
-    public boolean insert_new_manager(WarehouseManager warehouseManager) throws Exception {
-        return warehouseManagerMapper.insert_new_manager(warehouseManager);
+    public void insert_new_manager(WarehouseManager warehouseManager) throws Exception {
+        warehouseManagerMapper.insert_new_manager(warehouseManager);
+    }
+
+    public void delete_manager(String manager_id) throws Exception {
+        warehouseManagerMapper.delete_manager(manager_id);
+    }
+
+    public void update_manager(WarehouseManager warehouseManager) throws Exception {
+        warehouseManagerMapper.update_manager(warehouseManager);
+    }
+
+    public WarehouseManager select_warehouse_manager_by_id(String manager_id) throws Exception{
+        return warehouseManagerMapper.select_warehouse_manager_by_id(manager_id);
     }
 
 }
