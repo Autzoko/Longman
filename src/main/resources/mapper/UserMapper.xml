@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wms.longman.mapper.UserMapper">
+    <resultMap id="User" type="com.wms.longman.entity.User">
+        <id property="user_id" column="user_id"/>
+        <result property="user_id" column="user_id"/>
+        <result property="user_name" column="user_name"/>
+        <result property="user_pwd" column="user_pwd"/>
+        <result property="user_phone" column="user_phone"/>
+    </resultMap>
+
+    <insert id="insertUser" parameterType="com.wms.longman.entity.User">
+        insert into user
+        values(#{user_id}, #{user_name}, #{user_pwd}, #{user_phone})
+    </insert>
+
+    <select id="selectUserById" parameterType="String" resultMap="User">
+        select * from user where user_id=#{user_id}
+    </select>
+
+    <select id="selectUserByName" parameterType="String" resultMap="User">
+        select * from user where user_name=#{user_name}
+    </select>
+
+    <update id="updateUser" parameterType="com.wms.longman.entity.User">
+        update user
+        set
+            user_name = #{user_name},
+            user_pwd = #{user_pwd},
+            user_phone = #{user_phone}
+        where
+            user_id = #{user_id}
+    </update>
+
+    <delete id="deleteUserById" parameterType="String">
+        delete from user where user_id=#{user_id}
+    </delete>
+
+</mapper>
