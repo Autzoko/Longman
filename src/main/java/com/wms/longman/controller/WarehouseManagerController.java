@@ -124,6 +124,7 @@ public class WarehouseManagerController {
             String manager_level = (String) row.get(2);
             manager.setManager_level(ManagerLevel.valueOf(manager_level));
 
+            //process date
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date date = dateFormat.parse((String) row.get(4));
             manager.setLast_login_datetime(new Timestamp(date.getTime()));
